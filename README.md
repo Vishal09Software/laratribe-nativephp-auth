@@ -124,6 +124,22 @@ If Composer complains about stability, also add to your app's `composer.json`:
 composer dump-autoload
 ```
 
+**5. Confirm the routes actually registered:**
+```bash
+php artisan route:list --name=nativephp-auth
+```
+This should list `auth/login`, `auth/register`, etc. If the list comes back empty,
+Laravel's package auto-discovery didn't pick up the provider — usually because your
+app's `composer.json` has an `extra.laravel.dont-discover` entry blocking it. Run the
+included fallback installer, which registers the provider by hand (works on both
+Laravel 11/12's `bootstrap/providers.php` and Laravel 10's `config/app.php`, and is
+safe to run more than once):
+```bash
+php bin/register-provider.php
+```
+(Run it from your Laravel app's root — if you installed via the `packages/laratribe/nativephp-auth`
+path above, the script lives at `packages/laratribe/nativephp-auth/bin/register-provider.php`.)
+
 ---
 
 ## Web-view module reference
