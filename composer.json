@@ -1,0 +1,30 @@
+{
+    "name": "laratribe/nativephp-auth",
+    "description": "A drop-in Auth module (Login, Register, OTP Verify, Forgot/Reset Password) for NativePHP apps — one codebase for Android, iOS, and Web.",
+    "type": "library",
+    "keywords": ["laravel", "nativephp", "auth", "otp", "login", "register", "android", "ios", "web"],
+    "license": "MIT",
+    "require": {
+        "php": "^8.1",
+        "illuminate/support": "^10.0|^11.0|^12.0",
+        "illuminate/database": "^10.0|^11.0|^12.0",
+        "illuminate/notifications": "^10.0|^11.0|^12.0"
+    },
+    "suggest": {
+        "nativephp/mobile": "^4.0 — required only if you want the true EDGE/SuperNative screens (src/Native/*Screen.php). The plain web-view auth module works without it."
+    },
+    "autoload": {
+        "psr-4": {
+            "Laratribe\\NativephpAuth\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Laratribe\\NativephpAuth\\NativephpAuthServiceProvider"
+            ]
+        }
+    },
+    "minimum-stability": "stable",
+    "prefer-stable": true
+}
